@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光与球 · CSS 课后练习</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="header"><a href="../">← 返回音乐台</a><span>CSS LAB / 02</span></header>
+    <section class="intro">
+      <p class="eyebrow">渐变 · 空间 · 动效</p>
+      <h1>一点颜色，一点立体感。</h1>
+      <p>用径向渐变模拟光线，让一个简单的 div 有了体积。</p>
+    </section>
+    <div class="exercises">
+      <section class="card" aria-labelledby="ball-title">
+        <div class="card-heading"><span class="number">01</span><span>RADIAL GRADIENT</span></div>
+        <div class="stage"><div class="ball" role="img" aria-label="左上方明亮、右下方暗红的立体红球"></div></div>
+        <h2 id="ball-title">立体的红色小球</h2>
+        <p>光从左上方落下，亮红色逐渐过渡到暗红色。</p>
+        <code>radial-gradient(circle at 30% 25%, …)</code>
+      </section>
+      <section class="card" aria-labelledby="loading-title">
+        <div class="card-heading"><span class="number">02</span><span>FULLSCREEN OVERLAY</span></div>
+        <div class="stage loading-stage"><div class="loader" aria-hidden="true"></div><span>加载中…</span></div>
+        <h2 id="loading-title">全屏加载遮罩</h2>
+        <p>半透明黑色背景，居中的白色渐变圆点，每 2 秒旋转一圈。</p>
+        <button id="open-overlay" type="button">体验全屏遮罩 <span aria-hidden="true">↗</span></button>
+      </section>
+    </div>
+    <aside class="calculation" aria-label="尺寸计算">
+      <span class="calculation-label">尺寸小笔记</span>
+      <p>根字号 <strong>16px</strong> × 半径 <strong>1.5rem</strong> = <strong>24px</strong> 半径</p>
+      <span>所以圆点宽、高均为 <strong>3rem = 48px</strong>。</span>
+    </aside>
+    <footer><span>HTML5 + CSS3 + JavaScript · 课后练习</span><span>光影，来自 CSS。</span></footer>
+  </main>
+  <dialog id="loading-overlay" aria-labelledby="overlay-title" aria-describedby="overlay-hint">
+    <div class="overlay-content">
+      <div class="loader" aria-hidden="true"></div>
+      <div class="overlay-caption">
+        <p id="overlay-title" role="status">加载中…</p>
+        <p id="overlay-hint">这是遮罩效果演示，按 Esc 或点击按钮即可关闭。</p>
+        <button id="close-overlay" type="button" autofocus>关闭演示</button>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

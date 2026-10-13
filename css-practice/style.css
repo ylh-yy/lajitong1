@@ -1,0 +1,50 @@
+/* 1rem = 16px；圆点半径 1.5rem = 24px，直径 3rem = 48px。 */
+html { font-size: 16px; }
+* { box-sizing: border-box; }
+body { margin: 0; color: #252729; background: #f6f5f2; font-family: "Segoe UI", "Microsoft YaHei", sans-serif; }
+.page { width: min(1020px, calc(100% - 40px)); margin: auto; }
+.header { display: flex; justify-content: space-between; padding: 28px 0; border-bottom: 1px solid #ddded9; font-size: 12px; letter-spacing: 1px; }
+.header a { color: #555954; text-decoration: none; }
+.header a:hover { color: #bc312d; }
+.intro { margin: 54px 0 32px; }
+.eyebrow { font-size: 12px; color: #b23c33; letter-spacing: 3px; }
+h1 { font-size: clamp(28px, 4vw, 42px); letter-spacing: -1px; margin: 14px 0; }
+.intro > p:last-child { color: #71756f; font-size: 14px; line-height: 1.8; }
+.exercises { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.card { min-width: 0; background: #fff; border: 1px solid #e4e5df; border-radius: 16px; padding: 25px; }
+.card-heading { display: flex; align-items: center; justify-content: space-between; font-size: 10px; letter-spacing: 1.5px; color: #828780; }
+.number { color: #333831; font-size: 13px; font-family: monospace; }
+.stage { height: 245px; display: grid; place-items: center; position: relative; }
+/* 练习一：偏左上的渐变中心，亮红到暗红，配合投影模拟体积。 */
+.ball { width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle at 30% 25%, #ffb1a5 0%, #ff5046 18%, #ed2727 42%, #a50e17 72%, #460612 100%); box-shadow: inset -9px -12px 18px #43000c35, 0 29px 21px -17px #54061345; }
+h2 { margin: 6px 0 10px; font-size: 20px; }
+.card > p { color: #71756f; font-size: 13px; line-height: 1.8; min-height: 47px; margin: 0 0 17px; }
+code { display: block; padding: 12px 10px; border-radius: 6px; background: #f5f5f2; font-size: 11px; color: #6c706a; overflow-wrap: anywhere; }
+.loading-stage { background: #292d2b; border-radius: 10px; margin: 20px 0 24px; height: 201px; }
+.loading-stage > span { position: absolute; top: calc(50% + 40px); color: #bbbfb9; font-size: 11px; letter-spacing: 2px; }
+/* 练习二：固定定位铺满视口，rgba 半透明背景。 */
+#loading-overlay { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(0, 0, 0, .7); color: #fff; overflow: auto; }
+#loading-overlay::backdrop { background: transparent; }
+.overlay-content { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+/* 圆点本身在屏幕正中央；说明文字置于下方，不偏移圆点。 */
+.loader { position: relative; width: 3rem; height: 3rem; border-radius: 50%; background: radial-gradient(circle at center, #ffffff 0%, #eeeeee 100%); animation: rotate 2s linear infinite; }
+/* 对称圆点旋转不易看出，添加外侧小标记辅助观察。 */
+.loader::after { content: ""; position: absolute; width: 5px; height: 5px; top: -12px; left: calc(50% - 2.5px); border-radius: 50%; background: #fff; opacity: .75; }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.overlay-caption { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%); width: min(330px, calc(100vw - 40px)); text-align: center; }
+#overlay-title { font-size: 16px; letter-spacing: 2px; }
+#overlay-hint { font-size: 12px; line-height: 1.8; color: #c9cbc7; }
+button { font: inherit; font-size: 12px; border: 0; padding: 12px 17px; border-radius: 6px; cursor: pointer; transition: background-color .2s, transform .2s; }
+#open-overlay { background: #2f3931; color: #fff; width: 100%; display: flex; justify-content: space-between; }
+#open-overlay:hover { background: #48594c; }
+#close-overlay { color: #fff; background: #ffffff20; border: 1px solid #ffffff40; margin-top: 8px; }
+#close-overlay:hover { background: #ffffff35; }
+button:active { transform: translateY(1px); }
+button:focus-visible, a:focus-visible { outline: 3px solid #cc6a4b; outline-offset: 4px; }
+body.has-overlay { overflow: hidden; }
+.calculation { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 24px; padding: 24px; margin-top: 24px; background: #eceee7; border-radius: 10px; font-size: 12px; color: #61695d; }
+.calculation-label { color: #394333; font-weight: 700; }
+.calculation p { margin: 0; line-height: 1.8; }
+footer { display: flex; justify-content: space-between; gap: 12px; margin: 30px 0; color: #888d84; font-size: 11px; }
+@media (max-width: 650px) { .exercises { grid-template-columns: 1fr; } .intro { margin-top: 34px; } .card { padding: 20px; } footer { flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { .loader { animation: none; } button { transition: none; } }
